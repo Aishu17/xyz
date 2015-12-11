@@ -1,0 +1,33 @@
+﻿use project;
+create table movie(movie_name char(20),language char(10),genre varchar(10),rating int(2));
+insert into movie values('prem rathan dan payo','hindi','U/A','3.5');
+insert into movie values('tripura','telugu','A','4.0');
+insert into movie values('the martier','english','U/A','4.5');
+
+create table theater(cname char(20),email char(20),mobile int(20)primary key,date varchar(10),place varchar(20),timing varchar(10),type varchar(10));
+SELECT * FROM payment p;
+
+;
+insert into theater values('def','banjara hills','15/11/15','10:00','A/C');
+insert into theater values('ghi','punjagutta','15/11/15','11:30','A/C');
+
+create table typeseats(nseats int(10),typeclass char(10));
+insert into typeseats values('2','gold class');
+insert into typeseats values('1','platinum class');
+insert into typeseats values('3','balcony');
+
+SELECT * FROM payment WHERE typeclass='gold';
+insert into payment values('gold ','200','100');
+insert into payment values('platinum ','300','100');
+SELECT * FROM theater t;
+
+SHOW GRANTS FOR CURRENT_USER;
+
+create table details(cname char(20)references theater,mobile int(20)references theater,cardno int(16),expiry int(20),cvv int(3),check(expiry>=1 and expiry<=12));
+SELECT * FROM details t;
+
+
+CREATE USER 'root'@'localhost';
+GRANT ALL ON db1.* TO 'root'@'localhost';
+GRANT SELECT ON project.payment TO 'root'@'localhost';
+GRANT USAGE ON *.* TO 'root'@'localhost' WITH MAX_QUERIES_PER_HOUR 90;
